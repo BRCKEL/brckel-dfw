@@ -10,88 +10,95 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Crimson+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:#FAF3E0; --surface:#F0E6CC; --surface2:#E8D9B8; --white:#FFFDF5;
-      --text:#2C1810; --textLight:#6B4E35; --textMuted:#9A7B5E; --border:#D4B896;
-      --accent:#C9973A; --accentDark:#8B6914; --dark:#3D2B1F; --dark2:#5C3D2E;
+      --bg:#F5EFE6; --surface:#EDE3D5; --surface2:#DCCCB7; --white:#FDFAF6;
+      --text:#2C1810; --textLight:#6B4F3A; --textMuted:#8A735F; --border:#C9B99A;
+      --accent:#B85C38; --accentDark:#8C3E22; --gold:#C9A84C; --dark:#2C1810; --dark2:#1A0D08;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;font-family:'Crimson Pro',Georgia,serif;background:var(--bg);color:var(--text)}
+    body{margin:0;font-family:'Crimson Pro',Georgia,serif;background:var(--bg);color:var(--text);font-size:18px;line-height:1.7}
     a{color:inherit}
-    .nav{background:var(--dark);border-bottom:2px solid var(--accentDark);position:sticky;top:0;z-index:20}
-    .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;min-height:64px}
+    .nav{background:var(--dark);border-bottom:2px solid var(--accent);position:sticky;top:0;z-index:20}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;min-height:68px}
     .brand{cursor:pointer;text-decoration:none}
-    .brand-title{font-family:'Playfair Display',serif;font-weight:900;font-size:17px;color:var(--accent);letter-spacing:.04em}
+    .brand-title{font-family:'Playfair Display',serif;font-weight:900;font-size:18px;color:var(--white);letter-spacing:.1em;text-transform:uppercase}
+    .brand-title span{color:var(--gold)}
     .brand-sub{font-size:9px;color:var(--surface2);letter-spacing:.18em;text-transform:uppercase;margin-top:1px}
-    .nav-links{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+    .nav-links{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
     .nav-links a{color:var(--surface2);font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-bottom:2px solid transparent;padding:4px 0;font-weight:700;white-space:nowrap}
-    .nav-links a:hover{color:var(--accent);border-bottom-color:var(--accent)}
-    .menu{display:none;background:none;border:0;color:var(--surface);font-size:28px}
-    .hero{background:linear-gradient(145deg,#2A1E14 0%,var(--dark) 40%,#5C3D2E 80%,#7A5030 100%);padding:96px 24px 80px;text-align:center;position:relative;overflow:hidden}
-    .hero:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 20% 60%,rgba(201,151,58,.12) 0%,transparent 55%)}
-    .hero>*{position:relative}
-    .badge{display:inline-block;padding:5px 14px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:rgba(201,151,58,.15);color:#8B6914;border:1px solid rgba(201,151,58,.35)}
-    .hero .badge{margin-bottom:22px;color:var(--accent);background:rgba(201,151,58,.13)}
+    .nav-links a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+    .menu{display:none;background:none;border:0;color:var(--surface2);font-size:28px}
+    .hero{background:radial-gradient(ellipse 60% 50% at 70% 40%, rgba(184,92,56,0.18) 0%, transparent 70%),radial-gradient(ellipse 40% 60% at 20% 70%, rgba(201,168,76,0.10) 0%, transparent 60%),linear-gradient(160deg,#1a0d08 0%,#2C1810 50%,#1a0d08 100%);padding:104px 24px 86px;text-align:center;position:relative;overflow:hidden}
+    .badge{display:inline-block;padding:5px 14px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:rgba(201,168,76,.13);color:var(--gold);border:1px solid rgba(201,168,76,.35);margin-bottom:22px}
     h1,h2,h3{font-family:'Playfair Display',serif}
-    h1{font-size:54px;font-weight:900;color:var(--white);line-height:1.12;margin:0 0 26px}
-    h1 span{color:var(--accent)}
-    .hero p{font-size:19px;color:var(--surface);line-height:1.75;font-weight:300;max-width:680px;margin:0 auto 38px}
-    .btn{display:inline-block;padding:14px 30px;font-family:'Crimson Pro',serif;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .25s;border:0;text-decoration:none;text-align:center}
-    .btn.accent{background:var(--accent);color:var(--white)}
-    .btn.accent:hover{background:var(--accentDark);transform:translateY(-2px)}
-    .btn.outline{background:transparent;color:var(--accent);border:2px solid var(--accent)}
-    .btn.outline:hover{background:var(--accent);color:var(--white)}
-    .btn.dark{background:var(--dark);color:var(--surface)}
-    .btn.white{background:var(--white);color:var(--dark)}
-    .bar{background:#2A1E14;padding:18px 24px;border-bottom:1px solid var(--accentDark)}
-    .bar-inner{max-width:1000px;margin:0 auto;display:flex;justify-content:space-around;flex-wrap:wrap;gap:14px}
-    .bar-item{color:var(--surface2);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+    h1{font-size:clamp(2.7rem,7vw,5.3rem);font-weight:900;color:var(--white);line-height:1.08;margin:0 0 26px;text-shadow:0 2px 40px rgba(0,0,0,.45)}
+    h1 span{color:var(--gold);font-style:italic}
+    .hero p{font-size:20px;color:var(--surface2);line-height:1.75;font-weight:300;max-width:700px;margin:0 auto 38px}
+    .btn{display:inline-block;padding:14px 30px;font-family:'Crimson Pro',serif;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .25s;border:0;text-decoration:none;text-align:center;border-radius:3px}
+    .btn.accent{background:var(--accent);color:var(--white);border:2px solid var(--accent)}
+    .btn.accent:hover{background:var(--accentDark);border-color:var(--accentDark);transform:translateY(-2px)}
+    .btn.outline{background:transparent;color:var(--white);border:2px solid rgba(253,250,246,.35)}
+    .btn.outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+    .bar{background:var(--accent);padding:22px 24px}
+    .bar-inner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;text-align:center}
+    .stat{color:var(--white)}
+    .stat strong{display:block;font-family:'Playfair Display',serif;font-size:32px;line-height:1}
+    .stat span{font-size:12px;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
     section{padding:80px 24px}
     .wrap{max-width:1100px;margin:0 auto}
     .wrap-narrow{max-width:820px;margin:0 auto}
     .center{text-align:center}
-    .section-title{font-size:40px;font-weight:700;color:var(--dark);margin:0 0 8px}
-    .eyebrow{color:var(--textMuted);font-size:11px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px}
+    .section-title{font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--dark);margin:0 0 10px;line-height:1.18}
+    .eyebrow{color:var(--accent);font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px;font-weight:700}
     .divider{width:48px;height:3px;background:var(--accent);margin:14px 0 24px}
     .center .divider{margin:14px auto 24px}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .subtitle{font-size:19px;color:var(--textLight);max-width:720px;margin:0 auto 34px;line-height:1.8}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-    .card{background:var(--white);border:1px solid var(--border);box-shadow:0 2px 20px rgba(61,43,31,.06);padding:32px}
-    .num{width:48px;height:48px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin:0 auto 20px}
+    .card{background:var(--white);border:1px solid var(--border);box-shadow:0 8px 30px rgba(44,24,16,.08);padding:32px;border-radius:6px}
+    .card h3{font-size:24px;margin:0 0 12px;color:var(--dark)}
+    .card p{color:var(--textLight);margin:0}
+    .num{width:48px;height:48px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:900;margin:0 auto 20px}
     .surface{background:var(--surface)}
-    .cta{background:linear-gradient(135deg,var(--accentDark),var(--accent));padding:64px 24px;text-align:center}
-    .cta h2{font-size:38px;color:var(--white);margin:0 0 16px}
-    .cta p{color:rgba(255,253,245,.88);font-size:18px;max-width:620px;margin:0 auto 32px}
-    .page-hero{background:linear-gradient(135deg,var(--dark),var(--dark2));padding:72px 24px;text-align:center}
-    .page-hero h1{font-size:48px}
-    .page-hero p{color:var(--surface);font-size:18px;max-width:650px;margin:0 auto}
+    .dark-section{background:var(--dark);color:var(--white)}
+    .dark-section .section-title{color:var(--white)}
+    .dark-section .subtitle{color:var(--surface2)}
+    .city-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:32px}
+    .city{background:rgba(253,250,246,.06);border:1px solid rgba(253,250,246,.10);padding:12px 14px;border-radius:4px;color:var(--surface2);font-size:16px}
+    .zip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:24px}
+    .zip-card{background:var(--white);border:1px solid var(--border);padding:18px;border-radius:5px;color:var(--textLight)}
+    .zip-card strong{display:block;color:var(--dark);font-family:'Playfair Display',serif;font-size:20px;margin-bottom:4px}
+    .page-hero{background:linear-gradient(135deg,var(--dark) 60%,var(--accentDark));padding:72px 24px;text-align:center}
+    .page-hero h2{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;color:var(--white);margin:0 0 16px;line-height:1.15}
+    .page-hero h2 span{color:var(--gold)}
+    .page-hero p{color:var(--surface2);font-size:19px;max-width:650px;margin:0 auto}
     .field{margin-bottom:18px}
-    label{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--textLight);margin-bottom:6px}
-    input,select,textarea{width:100%;padding:12px 16px;font-family:'Crimson Pro',serif;font-size:16px;border:1px solid var(--border);background:var(--white);color:var(--text);outline:none;border-radius:0}
-    input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(201,151,58,.15)}
-    textarea{resize:vertical;min-height:100px}
-    .required{color:#c0392b}
+    label{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--textLight);margin-bottom:6px}
+    input,select,textarea{width:100%;padding:13px 16px;font-family:'Crimson Pro',serif;font-size:17px;border:1.5px solid var(--border);background:var(--bg);color:var(--text);outline:none;border-radius:4px}
+    input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(184,92,56,.13)}
+    textarea{resize:vertical;min-height:110px}
+    .required{color:#b83420}
     .form-message{display:none;margin-top:16px;padding:14px;text-align:center;font-size:15px}
     .form-success{background:#eef8ef;border:1px solid #b7dfbd;color:#1f6b2a}
     .form-error{background:#fdf0f0;border:1px solid #f5c6cb;color:#721c24}
-    .small{color:var(--textMuted);font-size:13px;text-align:center;margin-top:12px}
-    .list-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:13px;color:var(--textLight);font-size:16px;line-height:1.6}
+    .small{color:var(--textMuted);font-size:14px;text-align:center;margin-top:12px}
+    .list-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:13px;color:var(--textLight);font-size:17px;line-height:1.6}
     .check{color:var(--accent);font-weight:700}
-    footer{background:var(--dark);border-top:2px solid var(--accentDark);padding:56px 24px 32px}
+    .cta{background:linear-gradient(135deg,var(--accentDark),var(--accent));padding:64px 24px;text-align:center}
+    .cta h2{font-size:38px;color:var(--white);margin:0 0 16px}
+    .cta p{color:rgba(253,250,246,.88);font-size:18px;max-width:620px;margin:0 auto 32px}
+    footer{background:var(--dark);border-top:3px solid var(--accent);padding:56px 24px 32px;color:var(--surface2)}
     footer .foot-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px;margin-bottom:44px}
-    footer, footer a{color:var(--surface2)}
-    footer a{text-decoration:none;display:block;margin-bottom:10px}
-    footer h4{color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:0 0 18px}
-    .copyright{max-width:1100px;margin:0 auto;border-top:1px solid rgba(212,184,150,.15);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--textMuted);font-size:12px}
-    @media(max-width:900px){.grid-3{grid-template-columns:1fr 1fr}.nav-links{gap:12px}}
+    footer a{color:var(--surface2);text-decoration:none;display:block;margin-bottom:10px}
+    footer h4{color:var(--gold);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin:0 0 18px}
+    .copyright{max-width:1100px;margin:0 auto;border-top:1px solid rgba(201,185,154,.15);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:rgba(201,185,154,.55);font-size:13px}
+    @media(max-width:900px){.grid-3{grid-template-columns:1fr 1fr}.bar-inner{grid-template-columns:1fr}}
     @media(max-width:700px){
       .nav-inner{align-items:flex-start;padding-top:14px;padding-bottom:14px}
       .menu{display:block}
       .nav-links{display:none;width:100%;flex-direction:column;align-items:flex-start;padding-top:18px}
       .nav.open .nav-links{display:flex}
       .nav.open .nav-inner{flex-wrap:wrap}
-      h1,.page-hero h1{font-size:36px}
-      .section-title{font-size:32px}
       .grid-2,.grid-3{grid-template-columns:1fr}
       section{padding:56px 20px}
     }
@@ -101,75 +108,104 @@
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="#home" class="brand">
-        <div class="brand-title">BRCKEL ENTERPRISES LLC</div>
+        <div class="brand-title">BRCKEL <span>|</span> DFW</div>
         <div class="brand-sub">Dallas-Fort Worth · North Texas</div>
       </a>
       <button class="menu" type="button" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
       <div class="nav-links">
         <a href="#home">Home</a>
-        <a href="#sell">Sell Your House</a>
+        <a href="#sell">Sell</a>
         <a href="#situations">Situations</a>
-        <a href="#areas">DFW Areas</a>
-        <a href="#buyers">Investor Buyers</a>
+        <a href="#areas">Areas</a>
+        <a href="#buyers">Buyers</a>
       </div>
     </div>
   </nav>
 
   <main>
     <section class="hero" id="home">
-      <div class="badge">Dallas · Fort Worth · North Texas</div>
-      <h1>We Buy Houses in<br><span>Dallas-Fort Worth</span><br><em style="font-weight:400;font-size:.78em;color:#D4B896">As-Is. Fast. No Agent Fees.</em></h1>
-      <p>Need to sell a house in DFW without fixing it, listing it, or waiting months for a buyer? Submit the property details and we’ll review it for a possible cash offer.</p>
-      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:10px">
-        <a class="btn accent" href="#sell">Get My DFW Cash Offer</a>
-        <a class="btn outline" href="#buyers">Join Buyer List</a>
+      <div class="badge">Dallas–Fort Worth Metroplex</div>
+      <h1>Real Estate Solutions<br><span>Built for DFW</span></h1>
+      <p>We buy houses in any condition across the Dallas-Fort Worth area. No agents, no repairs, no open houses — just a simple way to explore a cash offer.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <a class="btn accent" href="#sell">Get My Cash Offer</a>
+        <a class="btn outline" href="#areas">See DFW Areas</a>
       </div>
     </section>
 
-    <div class="bar"><div class="bar-inner">
-      <div class="bar-item">✦ Sell As-Is</div><div class="bar-item">✦ No Realtor Commissions</div><div class="bar-item">✦ Vacant Houses OK</div><div class="bar-item">✦ Inherited Houses OK</div><div class="bar-item">✦ DFW Metroplex</div>
-    </div></div>
+    <div class="bar">
+      <div class="bar-inner">
+        <div class="stat"><strong>DFW</strong><span>Active Market</span></div>
+        <div class="stat"><strong>As-Is</strong><span>No Repairs Needed</span></div>
+        <div class="stat"><strong>Fair</strong><span>No-Pressure Review</span></div>
+      </div>
+    </div>
 
     <section>
       <div class="wrap center">
-        <div class="eyebrow">Simple DFW Selling Process</div>
-        <h2 class="section-title">How It Works</h2>
-        <div class="divider"></div>
+        <div class="eyebrow">What We Do</div>
+        <h2 class="section-title">We Help DFW Homeowners Sell Without the Usual Hassle</h2>
+        <p class="subtitle">Whether the property is vacant, inherited, tenant-occupied, outdated, behind on payments, or simply more work than you want to handle, we’ll review it and let you know if it fits our buying criteria.</p>
         <div class="grid-3">
-          <div class="card center"><div class="num">1</div><h3>Tell Us About the House</h3><p>Send the address and a few basic details. No prep work needed.</p></div>
-          <div class="card center"><div class="num">2</div><h3>We Review the Property</h3><p>We look at condition, location, repairs, and your timeline.</p></div>
-          <div class="card center"><div class="num">3</div><h3>Choose What Works</h3><p>If the numbers work, we discuss a simple, no-pressure purchase option.</p></div>
+          <div class="card center"><div class="num">1</div><h3>Submit the Property</h3><p>Send the address, city, ZIP code, condition, and timeline.</p></div>
+          <div class="card center"><div class="num">2</div><h3>We Review the Deal</h3><p>We look at the house, neighborhood, repairs, and likely investor exit.</p></div>
+          <div class="card center"><div class="num">3</div><h3>Choose What Works</h3><p>If it fits, we discuss a simple offer and timeline. No pressure.</p></div>
         </div>
       </div>
     </section>
 
-    <section class="surface">
+    <section class="surface" id="situations">
       <div class="wrap">
-        <div class="center"><h2 class="section-title">A Better Option Than Listing</h2><div class="divider"></div></div>
-        <div class="grid-2">
-          <div class="card">
-            <h3 style="color:var(--textMuted)">Traditional DFW Sale</h3>
-            <div class="list-row">✗ <span>Prep, clean, stage, and show the property</span></div>
-            <div class="list-row">✗ <span>Pay agent commissions and closing costs</span></div>
-            <div class="list-row">✗ <span>Deal with inspection repairs</span></div>
-            <div class="list-row">✗ <span>Wait on buyer financing</span></div>
-            <div class="list-row">✗ <span>Risk the deal falling apart late</span></div>
-          </div>
-          <div class="card" style="border:2px solid var(--accent)">
-            <h3 style="color:var(--accent)">With BRCKEL Enterprises</h3>
-            <div class="list-row"><span class="check">✓</span><span>We consider houses as-is in DFW</span></div>
-            <div class="list-row"><span class="check">✓</span><span>No realtor commissions</span></div>
-            <div class="list-row"><span class="check">✓</span><span>No cleanup or repairs required before contacting us</span></div>
-            <div class="list-row"><span class="check">✓</span><span>Vacant, inherited, outdated, and problem properties considered</span></div>
-            <div class="list-row"><span class="check">✓</span><span>You can choose a timeline that fits your situation</span></div>
-          </div>
+        <div class="center">
+          <div class="eyebrow">Common Situations</div>
+          <h2 class="section-title">DFW Properties We’ll Review</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="grid-3">
+          <div class="card center"><h3>Inherited Houses</h3><p>Estate or probate-style situations where the family wants a clean, simple sale.</p></div>
+          <div class="card center"><h3>Vacant Houses</h3><p>Properties sitting empty, attracting attention, or costing money every month.</p></div>
+          <div class="card center"><h3>Repair-Heavy Houses</h3><p>Foundation, roof, fire, water, code, or major deferred maintenance issues.</p></div>
+          <div class="card center"><h3>Tenant Problems</h3><p>Non-performing rentals, difficult tenants, or landlords who are ready to be done.</p></div>
+          <div class="card center"><h3>Behind on Payments</h3><p>Time-sensitive situations where the seller needs options quickly.</p></div>
+          <div class="card center"><h3>Just Exploring</h3><p>You don’t have to be desperate. You may simply want to see what an investor could offer.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-section" id="areas">
+      <div class="wrap">
+        <div class="eyebrow" style="color:var(--gold)">Coverage Area</div>
+        <h2 class="section-title">We Review Properties Across the DFW Metroplex</h2>
+        <p class="subtitle">From downtown Dallas to the outer suburbs, we’re interested in properties throughout Dallas, Tarrant, Denton, Collin, Ellis, and surrounding North Texas counties.</p>
+        <div class="city-grid">
+          <div class="city">📍 Dallas</div><div class="city">📍 Fort Worth</div><div class="city">📍 Arlington</div><div class="city">📍 Garland</div>
+          <div class="city">📍 Mesquite</div><div class="city">📍 Irving</div><div class="city">📍 Grand Prairie</div><div class="city">📍 DeSoto</div>
+          <div class="city">📍 Lancaster</div><div class="city">📍 Duncanville</div><div class="city">📍 Cedar Hill</div><div class="city">📍 Waxahachie</div>
+          <div class="city">📍 Mansfield</div><div class="city">📍 Burleson</div><div class="city">📍 Plano</div><div class="city">📍 Richardson</div>
+          <div class="city">📍 Carrollton</div><div class="city">📍 Denton</div><div class="city">📍 Lewisville</div><div class="city">📍 McKinney</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap center">
+        <div class="eyebrow">Example ZIP Focus</div>
+        <h2 class="section-title">DFW ZIP Codes & Areas Buyers Often Ask About</h2>
+        <p class="subtitle">These are not the only areas we’ll review. They’re examples of local search language sellers and buyers may recognize.</p>
+        <div class="zip-grid">
+          <div class="zip-card"><strong>South Dallas</strong>75216 · 75217 · 75224 · 75241</div>
+          <div class="zip-card"><strong>Oak Cliff / Dallas</strong>75208 · 75211 · 75212 · 75233</div>
+          <div class="zip-card"><strong>Mesquite / Garland</strong>75149 · 75150 · 75040 · 75041</div>
+          <div class="zip-card"><strong>Arlington / Grand Prairie</strong>76010 · 76011 · 75050 · 75051</div>
+          <div class="zip-card"><strong>Fort Worth</strong>76105 · 76112 · 76119 · 76133</div>
+          <div class="zip-card"><strong>South / Mid-Cities</strong>75115 · 75134 · 76028 · 76063</div>
         </div>
       </div>
     </section>
 
     <section id="sell" class="page-hero">
       <div class="badge">No Repairs · No Showings · No Commissions</div>
-      <h1>Get a <span>Cash Offer</span><br>for Your DFW House</h1>
+      <h2>Get a <span>Cash Offer</span><br>for Your DFW House</h2>
       <p>Tell us about the property and your situation. We’ll review it and follow up with next steps.</p>
     </section>
 
@@ -180,70 +216,44 @@
           <input type="hidden" name="_subject" value="🏚️ New Seller Lead — DFW">
           <input type="hidden" name="market" value="Dallas-Fort Worth">
           <div class="grid-2">
-            <div class="field"><label>Full Name <span class="required">*</span></label><input name="name" required placeholder="Your full name"></div>
-            <div class="field"><label>Phone</label><input name="phone" placeholder="Best number to reach you"></div>
+            <div class="field"><label>First Name <span class="required">*</span></label><input name="firstName" required placeholder="Jane"></div>
+            <div class="field"><label>Last Name</label><input name="lastName" placeholder="Smith"></div>
           </div>
-          <div class="field"><label>Email <span class="required">*</span></label><input type="email" name="email" required placeholder="your@email.com"></div>
-          <div class="field"><label>Property Address</label><input name="address" placeholder="Street address, City, TX, ZIP"></div>
-          <div class="field"><label>DFW Area / City</label><select name="dfw_area"><option value="">Select…</option><option>Dallas</option><option>Fort Worth</option><option>Arlington</option><option>Garland</option><option>Irving</option><option>Grand Prairie</option><option>Mesquite</option><option>Plano / Frisco / McKinney</option><option>Denton / Lewisville</option><option>Other DFW Area</option></select></div>
-          <div class="field"><label>Property Condition</label><select name="condition"><option value="">Select…</option><option>Move-in Ready</option><option>Outdated but Livable</option><option>Needs Repairs</option><option>Major Repairs / Distressed</option><option>Fire / Foundation / Roof Issues</option><option>Not Sure</option></select></div>
           <div class="grid-2">
-            <div class="field"><label>Asking Price or Desired Price</label><input name="price" placeholder="e.g. $185,000"></div>
-            <div class="field"><label>Mortgage Balance</label><input name="mortgage" placeholder="e.g. Free & Clear / Not sure"></div>
+            <div class="field"><label>Phone</label><input name="phone" placeholder="Best number to reach you"></div>
+            <div class="field"><label>Email <span class="required">*</span></label><input type="email" name="email" required placeholder="your@email.com"></div>
           </div>
-          <div class="field"><label>Reason for Selling</label><select name="reason"><option value="">Select…</option><option>Inherited Property</option><option>Vacant House</option><option>Behind on Payments</option><option>Repairs Are Too Much</option><option>Relocation / Moving</option><option>Tenant Problems</option><option>Divorce / Life Change</option><option>Just Exploring</option></select></div>
-          <div class="field"><label>Timeline to Sell</label><select name="timeline"><option value="">Select…</option><option>ASAP</option><option>Within 30 days</option><option>1–3 months</option><option>3–6 months</option><option>Just exploring</option></select></div>
-          <div class="field"><label>Anything Else?</label><textarea name="notes" placeholder="Tell us more about the house, repairs, tenants, liens, or your situation…"></textarea></div>
-          <button class="btn accent" style="width:100%" type="submit">Submit — Get My DFW Offer</button>
+          <div class="field"><label>Property Address <span class="required">*</span></label><input name="address" required placeholder="123 Main Street"></div>
+          <div class="grid-2">
+            <div class="field"><label>City</label><input name="city" placeholder="Dallas"></div>
+            <div class="field"><label>ZIP Code</label><input name="zip" placeholder="75216"></div>
+          </div>
+          <div class="grid-2">
+            <div class="field"><label>Bedrooms</label><select name="beds"><option value="">Select…</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option></select></div>
+            <div class="field"><label>Bathrooms</label><select name="baths"><option value="">Select…</option><option>1</option><option>1.5</option><option>2</option><option>2.5</option><option>3+</option></select></div>
+          </div>
+          <div class="field"><label>Property Condition</label><select name="condition"><option value="">Select condition…</option><option>Move-in ready</option><option>Needs minor repairs</option><option>Needs major repairs</option><option>Fire / water damage</option><option>Foundation / structural issues</option><option>Vacant / abandoned</option><option>Tenant-occupied</option><option>Not sure</option></select></div>
+          <div class="field"><label>Reason for Selling</label><select name="reason"><option value="">Select…</option><option>Inherited property</option><option>Vacant house</option><option>Behind on payments</option><option>Repairs are too much</option><option>Relocation / moving</option><option>Tenant problems</option><option>Divorce / life change</option><option>Just exploring</option></select></div>
+          <div class="field"><label>Desired Timeline</label><select name="timeline"><option value="">How soon do you need to sell?</option><option>ASAP</option><option>Within 2 weeks</option><option>Within 30 days</option><option>1–3 months</option><option>Flexible / just exploring</option></select></div>
+          <div class="field"><label>Anything Else We Should Know?</label><textarea name="message" placeholder="Liens, probate, tenant-occupied, repairs, foundation issues, inherited property, etc."></textarea></div>
+          <button class="btn accent" style="width:100%" type="submit">Request My DFW Cash Offer</button>
           <div class="form-message form-success">Thank you! Your DFW property information was submitted. We’ll contact you soon.</div>
           <div class="form-message form-error">Something went wrong. Please submit again or email Brandon at brandon@brckel.com.</div>
-          <p class="small">100% confidential · No obligation · No pressure ever</p>
+          <p class="small">We respect your privacy. No obligation. No pressure.</p>
         </form>
       </div>
     </section>
 
-    <section id="situations" class="surface">
-      <div class="wrap">
-        <div class="center">
-          <div class="eyebrow">Common Situations</div>
-          <h2 class="section-title">DFW Properties We’ll Review</h2>
-          <div class="divider"></div>
-        </div>
-        <div class="grid-3">
-          <div class="card center"><h3>Inherited Houses</h3><p>Don’t want to clean it out, repair it, or list it? Submit it and we’ll review it.</p></div>
-          <div class="card center"><h3>Vacant Houses</h3><p>If the house is sitting empty and costing you money, we may be able to help.</p></div>
-          <div class="card center"><h3>Repair-Heavy Houses</h3><p>Foundation, roof, outdated interiors, tenant damage, and deferred maintenance are all okay to mention.</p></div>
-          <div class="card center"><h3>Tenant Problems</h3><p>We’ll review rental properties and situations involving difficult tenants or non-performing rentals.</p></div>
-          <div class="card center"><h3>Behind on Payments</h3><p>If timing matters, submit the details quickly so we can understand the situation.</p></div>
-          <div class="card center"><h3>Just Exploring</h3><p>You don’t have to be desperate. If you’re curious what an investor could offer, start here.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="areas">
-      <div class="wrap center">
-        <div class="eyebrow">Dallas-Fort Worth Coverage</div>
-        <h2 class="section-title">DFW Areas We’re Interested In</h2>
-        <div class="divider"></div>
-        <p style="font-size:18px;line-height:1.8;max-width:760px;margin:0 auto 30px;color:var(--textLight)">Dallas, Fort Worth, Arlington, Garland, Irving, Grand Prairie, Mesquite, Plano, Richardson, Carrollton, Denton, Lewisville, McKinney, Frisco, DeSoto, Lancaster, Duncanville, Hurst, Euless, Bedford, and surrounding North Texas communities.</p>
-        <a class="btn accent" href="#sell">Submit a DFW Property</a>
-      </div>
-    </section>
-
-    <section id="buyers" class="page-hero">
-      <div class="badge">DFW Cash Buyers & Investors</div>
-      <h1>Get Notified About<br><span>Off-Market DFW Deals</span></h1>
-      <p>Cash buyers, landlords, flippers, and creative finance buyers can join our list for future opportunities.</p>
-    </section>
-
-    <section>
+    <section class="surface" id="buyers">
       <div class="wrap">
         <div class="grid-2">
           <div>
-            <h2 class="section-title">Buyer List Focus</h2><div class="divider"></div>
-            <div class="list-row">🎯 <span><strong>DFW Off-Market Leads</strong><br>Dallas, Fort Worth, Arlington, Garland, Mesquite, Irving, Grand Prairie, and more.</span></div>
+            <div class="eyebrow">DFW Cash Buyers & Investors</div>
+            <h2 class="section-title">Join the DFW Buyer List</h2>
+            <p class="subtitle" style="margin-left:0">Cash buyers, landlords, flippers, and hard-money buyers can join the list for future DFW opportunities.</p>
+            <div class="list-row">🎯 <span><strong>Off-Market DFW Leads</strong><br>Dallas, Fort Worth, Arlington, Garland, Mesquite, Irving, Grand Prairie, and more.</span></div>
             <div class="list-row">💰 <span><strong>Investor-Friendly Deals</strong><br>Single-family, light rehab, rental, flip, and creative finance opportunities.</span></div>
-            <div class="list-row">🤝 <span><strong>No Obligation</strong><br>Join the list and review what fits your buy box.</span></div>
+            <div class="list-row">📍 <span><strong>ZIP-Code Specific</strong><br>Tell us exactly where you buy so we can match deals more accurately.</span></div>
           </div>
           <form class="card ajax-form" action="https://formspree.io/f/xpqkvlob" method="POST">
             <h2>Join the DFW Buyer List</h2><div class="divider"></div>
@@ -254,24 +264,30 @@
               <div class="field"><label>Phone</label><input name="phone" placeholder="Best number to reach you"></div>
             </div>
             <div class="field"><label>Email *</label><input type="email" name="email" required placeholder="your@email.com"></div>
-            <div class="field"><label>Target DFW Markets</label><input name="markets" placeholder="e.g. Dallas, Fort Worth, Arlington, Garland…"></div>
-            <div class="field"><label>Budget Per Deal</label><select name="budget"><option value="">Select…</option><option>Under $100,000</option><option>$100,000–$175,000</option><option>$175,000–$250,000</option><option>$250,000–$400,000</option><option>$400,000+</option></select></div>
-            <div class="field"><label>Additional Notes</label><textarea name="notes" placeholder="Buy box, zip codes, condition, exit strategy, funding status…"></textarea></div>
-            <button class="btn accent" style="width:100%" type="submit">Add Me to the DFW Buyer List</button>
+            <div class="field"><label>Target Areas / ZIP Codes</label><input name="areas" placeholder="e.g. South Dallas, 75216, 75217, Fort Worth west side…"></div>
+            <div class="field"><label>Buy Box</label><textarea name="buyBox" placeholder="e.g. SFR, 3/2+, $80k–$150k ARV, Dallas County, needs work OK…"></textarea></div>
+            <div class="field"><label>How Many Deals Per Year?</label><select name="volume"><option value="">Select…</option><option>1–2</option><option>3–5</option><option>6–10</option><option>10+</option></select></div>
+            <button class="btn accent" style="width:100%" type="submit">Join the Buyer List</button>
             <div class="form-message form-success">Thank you! You’re on the DFW buyer list.</div>
             <div class="form-message form-error">Something went wrong. Please submit again or email Brandon at brandon@brckel.com.</div>
           </form>
         </div>
       </div>
     </section>
+
+    <section class="cta">
+      <h2>Have a DFW Property You Want Reviewed?</h2>
+      <p>Submit the details and we’ll take a look. No agent commissions, no repairs required before reaching out, and no pressure.</p>
+      <a class="btn outline" href="#sell">Submit Property Details</a>
+    </section>
   </main>
 
   <footer>
     <div class="foot-grid">
       <div>
-        <div class="brand-title">BRCKEL ENTERPRISES LLC</div>
-        <p>Helping sellers and investors across Dallas-Fort Worth and North Texas.</p>
-        <p style="color:var(--accent);font-weight:700">brandon@brckel.com</p>
+        <div class="brand-title">BRCKEL <span>|</span> DFW</div>
+        <p>BRCKEL Enterprises LLC is a real estate investment company reviewing seller leads and buyer opportunities across Dallas-Fort Worth and North Texas.</p>
+        <p style="color:var(--gold);font-weight:700">brandon@brckel.com</p>
       </div>
       <div>
         <h4>Quick Links</h4>
